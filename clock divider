@@ -1,0 +1,12 @@
+module clock_divider(
+
+    input clk,
+    output reg slow_clk
+);
+    reg [15:0] counter = 0;
+
+    always @(posedge clk) begin
+        counter <= counter + 1;
+        slow_clk <= counter[15];   // Toggle at ~1.5 kHz if clk=100 MHz
+    end
+endmodule
